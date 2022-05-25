@@ -34,8 +34,13 @@ function TodoProvider(props) {
   const completeTodo = (text) => {
     const todoIndex = todos.findIndex((todo) => todo.text === text);
     const newTodos = [...todos];
-    newTodos[todoIndex].completed = true;
-    saveTodos(newTodos);
+    if (newTodos[todoIndex].completed === true) {
+      newTodos[todoIndex].completed = false;
+      saveTodos(newTodos);
+    } else {
+      newTodos[todoIndex].completed = true;
+      saveTodos(newTodos);
+    }
   };
 
   // Delete todos
@@ -68,7 +73,7 @@ function TodoProvider(props) {
         isOpen,
         onOpen,
         onClose,
-        addTodo
+        addTodo,
       }}
     >
       {props.children}
