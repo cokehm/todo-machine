@@ -1,11 +1,8 @@
 import React from "react";
 import { Stack, Input, InputGroup, InputLeftElement } from "@chakra-ui/react";
 import { SearchIcon } from "@chakra-ui/icons";
-import { TodoContext } from "../Services/TodoContext";
 
-function TodoSearch() {
-  const { searchValue, setSearchValue } = React.useContext(TodoContext)
-
+function TodoSearch({ searchValue, setSearchValue }) {
   const onSearchValueChange = (event) => {
     console.log(event.target.value);
     setSearchValue(event.target.value);

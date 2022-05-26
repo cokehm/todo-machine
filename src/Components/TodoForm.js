@@ -1,11 +1,8 @@
 import React from "react";
 import { FormControl, FormLabel, Textarea, ModalBody, ModalFooter, Button } from "@chakra-ui/react";
-import { TodoContext } from "../Services/TodoContext";
 
-function TodoForm({ onClose }) {
+function TodoForm({ addTodo, onClose }) {
   const [newTodoValue, setNewTodoValue] = React.useState("");
-
-  const { addTodo } = React.useContext(TodoContext);
 
   const onChange = (event) => {
     setNewTodoValue(event.target.value);

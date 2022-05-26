@@ -2,9 +2,7 @@ import React from "react";
 import { useLocalStorage } from "./useLocalStorage";
 import { useDisclosure } from "@chakra-ui/react";
 
-const TodoContext = React.createContext();
-
-function TodoProvider(props) {
+function useTodos() {
   const { item: todos, saveItem: saveTodos, loading, error } = useLocalStorage("TODOS_v1", []);
 
   // ModalState
@@ -58,9 +56,7 @@ function TodoProvider(props) {
     saveTodos(newTodos);
   };
 
-  return (
-    <TodoContext.Provider
-      value={{
+  return {
         completedTodos,
         totalTodos,
         searchValue,
@@ -74,11 +70,7 @@ function TodoProvider(props) {
         onOpen,
         onClose,
         addTodo,
-      }}
-    >
-      {props.children}
-    </TodoContext.Provider>
-  );
+      };
 }
 
-export { TodoContext, TodoProvider };
+export { useTodos };
